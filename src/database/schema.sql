@@ -1,0 +1,14 @@
+CREATE DATABASE db;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+
+CREATE TABLE IF NOT EXISTS measures (
+ uuid UUID PRIMARY KEY NOT NULL UNIQUE DEFAULT uuid_generate_v4 ,
+ datetime DEFAULT CURRENT_DATE,
+ customer_code VARCHAR ,
+ value INTEGER,
+ type VARCHAR DEFAULT NULL,
+ has_confirmed BOOLEAN DEFAULT FALSE ,
+ image_url VARCHAR
+)

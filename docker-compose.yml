@@ -1,8 +1,7 @@
-version: '3.7'
-
 services:
+
   postgres:
-    image: 'bitnami/postgres:latest'
+    image: 'bitnami/postgresql:latest'
     ports:
       - '5432:5432'
     environment:
@@ -12,5 +11,15 @@ services:
     volumes:
       - polls_pg_data:/bitnami/postgresql
 
+  api:
+    container_name: api
+    build:
+      context: "./"
+      dockerfile: Dockerfile
+
+    volumes:
+      - "/app"
+    ports:
+      - 3001:3001
 volumes:
   polls_pg_data:

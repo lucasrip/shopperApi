@@ -8,7 +8,11 @@ routes.get("/hello",(request:Request,response:Response)=>response.json("containe
 
 routes.post("/upload",uploadImage,measuresController.upload);
 routes.patch("/confirm",measuresController.confirm);
-// routes.get("/!customerCode/list",measuresController.list);
+routes.get("/:costumerCode/list",measuresController.list);
+
+routes.delete('/deleteAll', measuresController.deleteAll);
+routes.get('/showAll/',measuresController.showAll );
+
 
 
 export default routes;

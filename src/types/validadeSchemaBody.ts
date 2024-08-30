@@ -1,3 +1,3 @@
-import { confirmBody, uploadBody } from "./measures";
+import { Iconfirm, Iupload, listType } from "./measures";
 
-export type IvalidadeSchemaBody = uploadBody | confirmBody;
+export type IvalidadeSchemaBody = Iupload | Iconfirm | listType;

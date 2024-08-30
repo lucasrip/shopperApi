@@ -8,17 +8,29 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=db
+    healthcheck:
+        test: ["CMD","postgrsadmin","ping","-h"]
+        timeout: 20s
+        retries: 10
     volumes:
       - polls_pg_data:/bitnami/postgresql
 
   api:
+    depends_on:
+     postgres:
+      condition: service_healthy
     container_name: api
+    restart: unless-stopped
+    env_file: ./.env
     build:
       context: "./"
       dockerfile: Dockerfile
 
     volumes:
       - "/app"
+    links:
+     - postgres
+    
     ports:
       - 3001:3001
 volumes:

@@ -1,10 +1,10 @@
 export interface Iupload
 {
-  datetime: Date,
+  date: Date,
   customerCode: string,
   type: "WATER" | "GAS"
-  image: "base64",
   value?:number,
+  uri?:string
 }
 
 export interface Iconfirm
@@ -13,7 +13,14 @@ export interface Iconfirm
  confirmedValue: number
 }
 
-export type listType ={
-  type: "WATER" | "GAS",
-  customerCode:string
+export type queryParams = {
+  measure_type?:"WATER" | "GAS" | "",
+  limit?:number,
+  offset?:number,
+  order?:string,
+
 }
+export type routeParams = {costumerCode:string}
+
+export type listType = routeParams & queryParams
+

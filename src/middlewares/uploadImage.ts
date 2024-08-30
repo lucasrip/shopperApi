@@ -15,6 +15,7 @@ export default multer({
       'image/png',
       'image/jpg',
       'image/jpeg',
+      'image/webp'
     ];
 
     if (imgFormatsAllowed.includes(file.mimetype)) cb(null, true);
@@ -23,4 +24,4 @@ export default multer({
       request.body.multerError = 'a imagem tem que ser do tipo png jpg e jpeg ';
     }
   },
-}).array('images', 1);
+}).array('image', 1);

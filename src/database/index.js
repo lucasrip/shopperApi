@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 
-require('dontenv').config();
+require('dotenv').config();
 
 const pool = new Pool({
   host: process.env.HOST,

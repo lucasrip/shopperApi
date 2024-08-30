@@ -4,7 +4,9 @@ RUN mkdir api
 
 WORKDIR /api
 
-COPY yarn.lock package.json ./
+RUN rm -rf ./node_modules
+
+COPY yarn.lock package.json  ./
 
 RUN yarn install
 
